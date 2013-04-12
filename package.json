@@ -1,0 +1,33 @@
+{
+  "author": {
+    "name": "Soares Chen",
+    "email": "soares.chen@gmail.com",
+    "url": "http://soareschen.com"
+  },
+  "name": "quiver-safe-callback",
+  "desription": "Ensure that callback is called only once and never immediately",
+  "version": "0.0.1",
+  "homepage": "https://github.com/quiverjs/safe-callback",
+  "repository": {
+    "url": "git@github.com:quiverjs/safe-callback.git"
+  },
+  "dependencies": {
+    "quiver-error": ">=0.0.1"
+  },
+  "devDependencies": {
+    "mocha": ">=1.8.1",
+    "should": ">=1.2.2"
+  },
+  "bugs": {
+    "url": "https://github.com/quiverjs/safe-callback/issues",
+    "email": "quiverjs@soareschen.com"
+  },
+  "licenses": {
+    "type": "MIT",
+    "url": "https://raw.github.com/quiverjs/license/master/LICENSE"
+  },
+  "main": "./lib/safe-callback",
+  "scripts": {
+    "test": "make test"
+  }
+}
