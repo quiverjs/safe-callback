@@ -21,13 +21,17 @@ describe('safe callback test', function() {
     var state = 'original'
     var callingFunctionExited = false
 
+    var syncFunction = function(callback) {
+      callback()
+    }
+
     var callback = safeCallback(function() {
       callingFunctionExited.should.equal(true)
       state = 'changed'
       done()
     })
 
-    callback()
+    syncFunction(callback)
     state.should.equal('original')
 
     ;(function() {
@@ -39,20 +43,27 @@ describe('safe callback test', function() {
 
   it('async callback should be called synchronously', function(done) {
     var state = 'original'
+
+    var asyncFunction = function(callback) {
+      process.nextTick(function() {
+        state.should.equal('original')
+        callback()
+        state.should.equal('changed by callback')
+        done()
+      })
+    }
+
     var callback = safeCallback(function() {
       state.should.equal('original')
       state = 'changed by callback'
     })
 
-    process.nextTick(function() {
-      state.should.equal('original')
-      callback()
-      state.should.equal('changed by callback')
-      done()
-    })
+    asyncFunction(callback)
   })
 
   it('async callback should contain both sync and async errors', function(done) {
+    console.log('\n** async callback error test **\n')
+
     var asyncFunction = function(callback) {
       callback = safeCallback(callback)
       process.nextTick(function() {
@@ -61,6 +72,21 @@ describe('safe callback test', function() {
     }
 
     asyncFunction(function(err) {
+      console.log('async stack:', err.stack)
+      console.log('sync stack:', err.syncStack)
+      done()
+    })
+  })
+
+  it('sync callback should contain both sync and async errors', function(done) {
+    console.log('\n** sync callback error test **\n')
+
+    var syncFunction = function(callback) {
+      callback = safeCallback(callback)
+      callback(error(500, 'test error'))
+    }
+
+    syncFunction(function(err) {
       console.log('async stack:', err.stack)
       console.log('sync stack:', err.syncStack)
       done()

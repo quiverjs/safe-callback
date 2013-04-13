@@ -5,14 +5,14 @@
     "url": "http://soareschen.com"
   },
   "name": "quiver-safe-callback",
-  "desription": "Ensure that callback is called only once and never immediately",
-  "version": "0.0.1",
+  "desription": "Ensure that callback is called only once and never synchronously",
+  "version": "0.0.2",
   "homepage": "https://github.com/quiverjs/safe-callback",
   "repository": {
     "url": "git@github.com:quiverjs/safe-callback.git"
   },
   "dependencies": {
-    "quiver-error": ">=0.0.1"
+    "quiver-error": ">=0.0.2"
   },
   "devDependencies": {
     "mocha": ">=1.8.1",
