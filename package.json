@@ -12,7 +12,8 @@
     "url": "git@github.com:quiverjs/safe-callback.git"
   },
   "dependencies": {
-    "quiver-error": ">=0.0.2"
+    "quiver-error": "0.0.x",
+    "quiver-callstack": "0.0.x"
   },
   "devDependencies": {
     "mocha": ">=1.8.1",

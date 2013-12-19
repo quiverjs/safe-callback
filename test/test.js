@@ -45,7 +45,7 @@ describe('safe callback test', function() {
     var state = 'original'
 
     var asyncFunction = function(callback) {
-      process.nextTick(function() {
+      setImmediate(function() {
         state.should.equal('original')
         callback()
         state.should.equal('changed by callback')
@@ -72,8 +72,7 @@ describe('safe callback test', function() {
     }
 
     asyncFunction(function(err) {
-      console.log('async stack:', err.stack)
-      console.log('sync stack:', err.syncStack)
+      console.log(err)
       done()
     })
   })
@@ -87,8 +86,7 @@ describe('safe callback test', function() {
     }
 
     syncFunction(function(err) {
-      console.log('async stack:', err.stack)
-      console.log('sync stack:', err.syncStack)
+      console.log(err)
       done()
     })
   })
