@@ -3,8 +3,10 @@
 
 var should = require('should')
 var error = require('quiver-error').error
-var safeCallback = require('../lib/safe-callback').safeCallback
-var safeFunction = require('../lib/safe-function').safeFunction
+var safeCallbackLib = require('../lib/safe-callback')
+
+var safeCallback = safeCallbackLib.safeCallback
+var safeFunction = safeCallbackLib.safeAsyncFunction
 
 console.log('*** nested safe callback test ***')
 

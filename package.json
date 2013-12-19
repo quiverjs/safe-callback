@@ -6,14 +6,13 @@
   },
   "name": "quiver-safe-callback",
   "desription": "Ensure that callback is called only once and never synchronously",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "homepage": "https://github.com/quiverjs/safe-callback",
   "repository": {
     "url": "git@github.com:quiverjs/safe-callback.git"
   },
   "dependencies": {
-    "quiver-error": "0.0.x",
-    "quiver-callstack": "0.0.x"
+    "quiver-error": "0.1.x"
   },
   "devDependencies": {
     "mocha": ">=1.8.1",
