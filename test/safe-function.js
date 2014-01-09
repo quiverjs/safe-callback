@@ -11,7 +11,7 @@ var safeFunction = safeCallbackLib.safeAsyncFunction
 console.log('*** nested safe callback test ***')
 
 var asyncLib = function(callback) {
-  setImmediate(function() {
+  process.nextTick(function() {
     callback(new Error('async library error'))
   })
 }
@@ -25,7 +25,7 @@ var func1 = safeFunction(function(callback) {
 })
 
 var func2 = safeFunction(function(callback) {
-  setImmediate(function() {
+  process.nextTick(function() {
     func1(function(err) {
       if(err) return callback(err)
 

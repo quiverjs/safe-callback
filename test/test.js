@@ -45,7 +45,7 @@ describe('safe callback test', function() {
     var state = 'original'
 
     var asyncFunction = function(callback) {
-      setImmediate(function() {
+      process.nextTick(function() {
         state.should.equal('original')
         callback()
         state.should.equal('changed by callback')

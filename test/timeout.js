@@ -20,7 +20,7 @@ var func2 = function(func, callback) {
 var func3 = function(callback) {
   callback = safeCallback(callback)
 
-  setImmediate(function() {
+  process.nextTick(function() {
     func2(func1, callback)
   })
 }
